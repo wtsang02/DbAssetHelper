@@ -1,4 +1,4 @@
 DbAssetHelper
 =============
 
-Import Database From asset.
+Import sqlite Database From asset. Single class that does the job.
