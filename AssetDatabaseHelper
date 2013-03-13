@@ -17,8 +17,8 @@ public class AssetDatabaseHelper extends SQLiteOpenHelper {
 	/**
 	 * A helper class to import db files.
 	 * 
-	 * @param base
-	 *            /app context
+	 * @param context
+	 *	base/app context
 	 * @param dbName
 	 *            The name of the db in asset folder .
 	 */
@@ -86,7 +86,9 @@ public class AssetDatabaseHelper extends SQLiteOpenHelper {
 		}
 
 	}
-
+	/**
+	 * Creates copies the database from asset to the new database location.
+	 * */
 	private void copyDatabase() throws IOException {
 		InputStream is = context.getAssets().open(dbName);
 
