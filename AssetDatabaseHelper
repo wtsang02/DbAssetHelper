@@ -10,7 +10,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
-import android.util.Log;
 
 /**
  * A helper class the import and export db files. </ br> Example to import from
@@ -27,7 +26,6 @@ public class AssetDatabaseHelper extends SQLiteOpenHelper {
 	private String dbName;
 	private String db_path;
 	private Context context;
-	public static final String DEFAULT_EXPORT_PATH = "";
 
 	/**
 	 * A helper class to import/export db files.
