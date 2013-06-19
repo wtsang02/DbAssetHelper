@@ -16,7 +16,7 @@ import android.util.Log;
  * A helper class the import and export db files. </ br> Example to import from
  * </ br> "{@code /assets/example.sqlite}" </ br>
  * {@code new AssetDAtabaseHelper(context,"example.sqlite").importIfNotExisit();}
- * {@code new AssetDAtabaseHelper(context,"example.sqlite").exportDatabase();}
+ * {@code new AssetDAtabaseHelper(context,"example.sqlite").exportDatabase(data.db, "/data/theNewDb.sqlite");}
  * 
  * @version 2
  * @author WillieTsang
@@ -93,8 +93,8 @@ public class AssetDatabaseHelper extends SQLiteOpenHelper {
 	/**
 	 * Export a database for database directory of app to a destnation in sd
 	 * card. Ex.</br>
-	 * {@code this.exportDatabase(data.db, "/data/theNewDb.sqlite")}
-	 * 
+	 * {@code this.exportDatabase(data.db, "/data/theNewDb.sqlite");} </br>
+	 * {@code this.exportDatabase(data.sqlite, null);}
 	 * @param dbName
 	 *            name of database file including extension.
 	 * @param exportDestPath
