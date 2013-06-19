@@ -15,9 +15,12 @@ import android.os.Environment;
  * A helper class the import and export db files. </ br> Example to import from
  * </ br> "{@code /assets/example.sqlite}" </ br>
  * {@code new AssetDAtabaseHelper(context,"example.sqlite").importIfNotExisit();}
- * {@code new AssetDAtabaseHelper(context,"example.sqlite").exportDatabase(data.db, "/data/theNewDb.sqlite");}
+ * </ br>
+ * Example to export to a speific locaiton in sd card: </ br>
  * 
- * @version 2
+ * {@code new AssetDAtabaseHelper(context,"example.db").exportDatabase("example.db", "/data/theNewDb.sqlite");}
+ * 
+ * @version 3
  * @author WillieTsang
  * 
  */
@@ -43,8 +46,7 @@ public class AssetDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	/**
-	 * Check if the database already exist to avoid re-copying the file each
-	 * time you open the application.
+	 * Checks if the data base is in your app's database directory.
 	 * 
 	 * @return true if it exists, false if it doesn't
 	 */
@@ -54,8 +56,8 @@ public class AssetDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	/**
-	 * Creates a empty database on the system and rewrites it with your own
-	 * database.
+	 * Imports the database from your {@code /assets/YOUR_DB} to your app's database directory.
+	 * This method will not override your database if it already exist.
 	 * */
 	public void importIfNotExist() throws IOException {
 		boolean dbExist = checkExist();
@@ -72,7 +74,7 @@ public class AssetDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	/**
-	 * Creates copies the database from asset to the new database location.
+	 * Creates a copie of the database from asset to the app's database directory..
 	 * */
 	private void copyDatabase() throws IOException {
 		InputStream is = context.getAssets().open(dbName);
@@ -142,9 +144,13 @@ public class AssetDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	/**
+	 * Example usage of this method can be just:</ br>
+	 *  {@code new AssetDAtabaseHelper(context,"example.db").exportDatabase(null);}</ br>
+	 *  which will take your database file and export it to external storage's root directory.
+	 * 
 	 * @see #exportDatabase(String, String)
 	 * @param exportDestSdPath
-	 *            exportDestPath path in the device's external storage. Passing
+	 *            path in the device's external storage. Passing
 	 *            in {@code null} will be exported to root of external storage.
 	 */
 	public void exportDatabase(String exportDestSdPath) {
