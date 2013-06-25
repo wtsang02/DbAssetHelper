@@ -6,7 +6,7 @@ Import/export sqlite Database From asset or sd card. Single class that does the 
 Common use of export in Activity class:
 
 
-  @Override
+  	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add("Export Database");
 		return super.onCreateOptionsMenu(menu);
@@ -25,7 +25,8 @@ Common use of export in Activity class:
   
   
   //Or on pause:
-  @Override
+  
+  	@Override
 	protected void onPause() {
   	new AssetDatabaseHelper(this,"test.sqlite").exportDatabase("/_REU/test.sqlite");
 		super.onPause();
